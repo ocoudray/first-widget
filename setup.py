@@ -131,7 +131,7 @@ setup_args = {
     'long_description': LONG_DESCRIPTION,
     'include_package_data': True,
     'data_files': [
-        ('share/jupyter/nbextensions/FirstWidgetnpm', [
+        ('share/jupyter/nbextensions/FirstWidget', [
             'FirstWidget/static/extension.js',
             'FirstWidget/static/index.js',
             'FirstWidget/static/index.js.map',

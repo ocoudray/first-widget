@@ -10,7 +10,7 @@ git add and git commit
 git push
 git push --tags
 
-- To release a new version of FirstWidgetnpm on NPM:
+- To release a new version of FirstWidget on NPM:
 
 ```
 # clean out the `dist` and `node_modules` directories

@@ -58,7 +58,7 @@ module.exports = [
           ],
         externals: ['@jupyter-widgets/base']
     },
-    {// Embeddable FirstWidgetnpm bundle
+    {// Embeddable FirstWidget bundle
      //
      // This bundle is generally almost identical to the notebook bundle
      // containing the custom widget views and models.
@@ -77,7 +77,7 @@ module.exports = [
             filename: 'index.js',
             path: path.resolve(__dirname, 'dist'),
             libraryTarget: 'amd',
-            publicPath: 'https://unpkg.com/FirstWidgetnpm@' + version + '/dist/'
+            publicPath: 'https://unpkg.com/FirstWidget@' + version + '/dist/'
         },
         devtool: 'source-map',
         module: myModule,

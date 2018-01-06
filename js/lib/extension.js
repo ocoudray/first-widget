@@ -7,7 +7,7 @@ if (window.require) {
     window.require.config({
         map: {
             "*" : {
-                "FirstWidgetnpm": "nbextensions/FirstWidgetnpm/index",
+                "FirstWidget": "nbextensions/FirstWidget/index",
             }
         }
     });
