@@ -13,6 +13,7 @@ Read on for technical details.
 ## Installation
 
 To install use pip and npm:
+
     $ git clone https://github.com//First_Custom_Widget.git
     $ cd First_Custom_Widget/js
     $ npm install
@@ -57,11 +58,11 @@ The flag `--sys-prefix` means extension are installed in this data folder:
 
     /usr/local/anaconda3/share/jupyter
 
-There you can see a `jupyter-widget-d3-slider` folder or symlink back to the source folder `static/`.  
+There you can see a `FirstWidget` folder or symlink back to the source folder `static/`.  
 For example:
 
     drwxr-xr-x  4 Olivier  staff   136B Sep 30 18:09 jupyter-js-widgets/
-    drwxr-xr-x  5 Olivier  staff   170B Oct  3 02:42 jupyter-widget-d3-slider/
+    drwxr-xr-x  5 Olivier  staff   170B Oct  3 02:42 FirstWidget/
 
 To check nbextensions are properly install and enabled, for example:
 
@@ -79,7 +80,7 @@ To check nbextensions are properly install and enabled, for example:
         notebook section
         jupyter-js-widgets/extension  enabled 
         - Validating: OK
-        jupyter-widget-d3-slider/extension  enabled 
+        FirstWidget/extension  enabled 
         - Validating: OK
 
 
@@ -95,7 +96,7 @@ It performs the following:
 The first step is the `npm install` command per se.  
 The second is the `prepare` command as defined in `package.json`. And `npm prepare` is automatically executed after npm install as explained in the [official doc](https://docs.npmjs.com/misc/scripts).
 
-The result is the creation of folders `js/dist` and `jupyter_widget_d3_slider/static` containing compiled javascript from source code in folder `js/`.
+The result is the creation of folders `js/dist` and `FirstWidget/static` containing compiled javascript from source code in folder `js/`.
 
 ### 3.2 - `pip install`
 
@@ -112,26 +113,27 @@ This command must be run **AFTER** the folder `static/` was created.
 
 It is a standard `pip install` command:
 + The source files and egg-info are copied to `/usr/local/anaconda3/lib/python3.6/site-packages`
-+ The files in folder `static/` are copied to `share/jupyter/nbextensions/jupyter-widget-d3-slider`
++ The files in folder `static/` are copied to `share/jupyter/nbextensions/FirstWidget`
 + Note that for a **dev install**:
     + An `egg-link` file links back to the source folder
-    + No file is copied to the folder `nbextensions/jupyter-widget-d3-slider`
+    + No file is copied to the folder `nbextensions/FirstWidget`
+    + Thanks to the `--symlink` you just need to restart the kernel to take into account any modification in the Python code
 
 ### 3.2 - `jupyter nbextension (install|uninstall)`
 
 The full command is:
 ```bash
-$ jupyter nbextension (install|uninstall) --py [--symlink] --sys-prefix jupyter_widget_d3_slider
+$ jupyter nbextension (install|uninstall) --py [--symlink] --sys-prefix FirstWidget
 ```
 
-It copies [create symlinks] resp. removes `static/` files to resp. from the nbextension data folder `share/jupyter/nbextensions/jupyter-widget-d3-slider` and adds resp. removes lines in config file `notebook.json` in config directory `/usr/local/anaconda3/etc/jupyter`.
+It copies [create symlinks] resp. removes `static/` files to resp. from the nbextension data folder `share/jupyter/nbextensions/FirstWidget` and adds resp. removes lines in config file `notebook.json` in config directory `/usr/local/anaconda3/etc/jupyter`.
 
 The config file `notebook.json` contains the following:
 
     {
         "load_extensions": {
             "jupyter-js-widgets/extension": true,
-            "jupyter-widget-d3-slider/extension": true
+            "FirstWidget/extension": true
         }
     }
 
@@ -140,12 +142,12 @@ The config file `notebook.json` contains the following:
 
 The full command is:
 ```bash
-$ jupyter nbextension (enable|disable) --py --sys-prefix jupyter_widget_d3_slider
+$ jupyter nbextension (enable|disable) --py --sys-prefix FirstWidget
 ```
 
-It sets to true resp. false the `jupyter-widget-d3-slider/extension` line in config file `notebook.json` in config directory `/usr/local/anaconda3/etc/jupyter`.
+It sets to true resp. false the `FirstWidget/extension` line in config file `notebook.json` in config directory `/usr/local/anaconda3/etc/jupyter`.
 
-### 3.4 - `npm prepare`
+### 3.4 - `npm run prepare`
 
 The full command is:
 ```bash
@@ -154,59 +156,30 @@ $ npm run prepare
 ```
 It is a script (which simply calls `webpack`) in npm config file `package.json`.  
 
-In an active dev activity (in the folder `js/`) substitute `npm install` by `npm prepare` as there is no need to reload node_modues from the internet or even to get them from the local npm cache (located in `~/.npm`)
+In an active dev activity (in the folder `js/`) substitute `npm install` by `npm run prepare` as there is no need to reload node_modules from the internet or even to get them from the local npm cache (located in `~/.npm`)
 
-This re-compile the source js folder into `static/`. The symlinks bring back from `share/jupyter/nbextensions/jupyter-widget-d3-slider` to `js/static/`. So just reload the notebook. The new js is available instantly !
+This re-compile the source js folder into `static/`. The symlinks bring back from `share/jupyter/nbextensions/FirstWidget` to `js/static/`. So just reload the notebook. The new js is available instantly !
 
-### 3.4 - `npm watch`
+### 3.4 - `npm run watch`
 
-To automate the build (i.e. running webpack) process start `npm watch`.  
-It will run in the background and trigger `npm prepare` each time any change occurs in the `js/lib/` folder.  
+To automate the build (i.e. running webpack) process start `npm run watch`.  
+It will run in the background and trigger `npm run prepare` each time any change occurs in the `js/lib/` folder.  
 
-## 4 - Publish
+## 4 - Publish on PyPI 
 
+### 4.1 - Publish new version of FirstWidget on PyPI
 
-In addition to a regular Python packages, the JS part can be published too.  
-This is useful only to use jupyter-widgets in a non-notebook context.  
+In order to publish a first version of your widget on PyPI:
++ Create an account on [PyPI](https://pypi.python.org/pypi?%3Aaction=register_form)
++ `pip install twine` (if not already installed)
++ `python setup.py sdist`
++ `twine upload dist/*`
 
-### 4.1 - Publish new version of jupyter_widget_d3_slider on PyPI
+To upload a new version of your widget:
++ change version in `FirstWidget/_version.py`
++ delete `dist`
++ `python setup.py sdist`
++ `twine upload dist/*`
 
-```bash
-# Update version in __meta__.py
-# git add and commit and push
+The full documentation can be found [here](https://packaging.python.org/tutorials/distributing-packages/)
 
-# from top folder
-python setup.py sdist upload -r pypi
-
-# tag version
-git tag -a X.X.X -m 'comment'
-git push --tags
-```
-
-
-### 4.2 - Publish new version of jupyter-widget-d3-slider on NPM
-
-
-```bash
-# from js/ folder
-
-# clean out the dist/ and node_modules/ folders
-# for example to remove any git untracked file/folder: 
-# git clean -fdx
-
-# Update version in package.json
-
-npm install
-
-# test run to see what you will publish
-# npm pack
-
-# before publishing
-# create a user if necessary 
-# login npm
-# ref: https://docs.npmjs.com/getting-started/publishing-npm-packages
-
-npm publish
-
-# check out the result on https://www.npmjs.com/
-```

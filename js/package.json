@@ -20,7 +20,8 @@
   ],
   "scripts": {
     "clean": "rimraf dist/",
-    "prepublish": "webpack",
+    "prepare": "webpack",
+    "watch": "watch 'npm run prepare' lib/",
     "test": "echo \"Error: no test specified toto\""
   },
   "devDependencies": {
