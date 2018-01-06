@@ -13,13 +13,6 @@
 */static/
 js/dist/
 
-setup.orig.py
-setup.orig2.py
-
-notebooks/*.html
-notebooks/*.sh
-notebooks/*.js
-
 dist/
 build/
 

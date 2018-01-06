@@ -118,7 +118,7 @@ It is a standard `pip install` command:
 + Note that for a **dev install**:
     + An `egg-link` file links back to the source folder
     + No file is copied to the folder `nbextensions/FirstWidget`
-    + Thanks to the `--symlink` you just need to restart the kernel to take into account any modification in the Python code
+    + Thanks to the `--symlink`, during dev, you just need to restart the kernel to take into account any modification in the Python code!
 
 ### 3.3 - `jupyter nbextension (install|uninstall)`
 
@@ -168,6 +168,8 @@ It will run in the background and trigger `npm run prepare` each time any change
 
 ## 4 - Publish on PyPI 
 
+A few comments on the release process are available in the RELEASE.md file, created by the cookiecutter. Below is our experience on the matter of publishing on PyPI:
+
 In order to publish a first version of your widget on PyPI:
 + Create an account on [PyPI](https://pypi.python.org/pypi?%3Aaction=register_form)
 + `pip install twine` (if not already installed)
@@ -180,5 +182,5 @@ To upload a new version of your widget:
 + `python setup.py sdist`
 + `twine upload dist/*`
 
-The full documentation can be found [here](https://packaging.python.org/tutorials/distributing-packages/)
+The full documentation can be found [here](https://packaging.python.org/tutorials/distributing-packages/).
 

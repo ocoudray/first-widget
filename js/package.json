@@ -1,7 +1,7 @@
 {
   "name": "FirstWidget",
   "version": "0.1.0",
-  "description": "ie cutter",
+  "description": "A Hello World Jupyter widget inspired by the Jupyter doc",
   "author": "Olivier Coudray",
   "main": "lib/index.js",
   "repository": {
