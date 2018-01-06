@@ -19,7 +19,7 @@ To install use pip and npm:
     $ cd First_Custom_Widget/js
     $ npm install
     $ cd ..
-    $ pip install FirstWidget
+    $ pip install .
     $ jupyter nbextension enable --py --sys-prefix FirstWidget
 
 
