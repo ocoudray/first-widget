@@ -1,4 +1,4 @@
-# First_Custom_Widget
+# FirstWidget
 
 ## Introduction
 
@@ -9,8 +9,9 @@ This simple widget may serve as an example of working widget with good practices
 To get a feel of the result check out the [demo notebook](https://github.com/ocoudray/FirstWidget/blob/master/notebooks/demo.ipynb).  
 Read on for technical details.  
 
+This documentation is based on the work of [oscar6echo](https://gitlab.com/oscar6echo/jupyter-widget-d3-slider/blob/master/README.md) who has contributed heavily to this project.
 
-## Installation
+## 1 - Installation
 
 To install use pip and npm:
 
@@ -119,7 +120,7 @@ It is a standard `pip install` command:
     + No file is copied to the folder `nbextensions/FirstWidget`
     + Thanks to the `--symlink` you just need to restart the kernel to take into account any modification in the Python code
 
-### 3.2 - `jupyter nbextension (install|uninstall)`
+### 3.3 - `jupyter nbextension (install|uninstall)`
 
 The full command is:
 ```bash
@@ -138,7 +139,7 @@ The config file `notebook.json` contains the following:
     }
 
 
-### 3.3 - `jupyter nbextension (enable|disable)`
+### 3.4 - `jupyter nbextension (enable|disable)`
 
 The full command is:
 ```bash
@@ -147,7 +148,7 @@ $ jupyter nbextension (enable|disable) --py --sys-prefix FirstWidget
 
 It sets to true resp. false the `FirstWidget/extension` line in config file `notebook.json` in config directory `/usr/local/anaconda3/etc/jupyter`.
 
-### 3.4 - `npm run prepare`
+### 3.5 - `npm run prepare`
 
 The full command is:
 ```bash
@@ -160,14 +161,12 @@ In an active dev activity (in the folder `js/`) substitute `npm install` by `npm
 
 This re-compile the source js folder into `static/`. The symlinks bring back from `share/jupyter/nbextensions/FirstWidget` to `js/static/`. So just reload the notebook. The new js is available instantly !
 
-### 3.4 - `npm run watch`
+### 3.6 - `npm run watch`
 
 To automate the build (i.e. running webpack) process start `npm run watch`.  
 It will run in the background and trigger `npm run prepare` each time any change occurs in the `js/lib/` folder.  
 
 ## 4 - Publish on PyPI 
-
-### 4.1 - Publish new version of FirstWidget on PyPI
 
 In order to publish a first version of your widget on PyPI:
 + Create an account on [PyPI](https://pypi.python.org/pypi?%3Aaction=register_form)
