@@ -20,19 +20,19 @@ var _ = require('lodash');
 
 // Custom View. Renders the widget model.
 
-var HelloModel = widgets.DOMWidgetModel.extend({
+var FirstModel = widgets.DOMWidgetModel.extend({
     defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
-        _model_name : 'HelloModel',
-        _view_name : 'HelloView',
-        _model_module : '{{ cookiecutter.npm_package_name }}',
-        _view_module : '{{ cookiecutter.npm_package_name }}',
-        _model_module_version : '{{ cookiecutter.npm_package_version }}',
-        _view_module_version : '{{ cookiecutter.npm_package_version }}',
+        _model_name : 'FirstModel',
+        _view_name : 'FirstView',
+        _model_module : 'FirstWidgetnpm',
+        _view_module : 'FirstWidgetnpm',
+        _model_module_version : '^0.1.0',
+        _view_module_version : '^0.1.0',
         value : 'Hello World'
     })
 });
 
-var HelloView = widgets.DOMWidgetView.extend({
+var FirstView = widgets.DOMWidgetView.extend({
     callback:function(inputEvent, formElement){
         this.model.set({'value':formElement[0].value})    // update the JS model with the current view value
         this.touch()   // sync the JS model with the Python backend
@@ -76,6 +76,6 @@ var HelloView = widgets.DOMWidgetView.extend({
 });
 
 module.exports = {
-    HelloModel : HelloModel,
-    HelloView : HelloView
+    FirstModel : FirstModel,
+    FirstView : FirstView
 };
