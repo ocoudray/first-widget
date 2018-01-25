@@ -24,8 +24,8 @@ var FirstModel = widgets.DOMWidgetModel.extend({
     defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
         _model_name : 'FirstModel',
         _view_name : 'FirstView',
-        _model_module : 'FirstWidget',
-        _view_module : 'FirstWidget',
+        _model_module : 'first-widget',
+        _view_module : 'first-widget',
         _model_module_version : '^0.1.0',
         _view_module_version : '^0.1.0',
         value : 'Hello World'

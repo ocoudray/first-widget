@@ -1,12 +1,12 @@
 {
-  "name": "FirstWidget",
+  "name": "first-widget",
   "version": "0.1.0",
   "description": "A Hello World Jupyter widget inspired by the Jupyter doc",
   "author": "Olivier Coudray",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com//First_Custom_Widget.git"
+    "url": "https://github.com/ocoudray/first-widget"
   },
   "keywords": [
     "jupyter",

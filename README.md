@@ -1,4 +1,4 @@
-# FirstWidget
+# first-widget
 
 ## Introduction
 
@@ -6,7 +6,7 @@ This is a simple widget inspired by the jupyter [doc](https://ipywidgets.readthe
 
 This simple widget may serve as an example of working widget with good practices.
 
-To get a feel of the result check out the [demo notebook](https://github.com/ocoudray/FirstWidget/blob/master/notebooks/demo.ipynb).  
+To get a feel of the result check out the [demo notebook](https://github.com/ocoudray/first-widget/blob/master/notebooks/demo.ipynb).  
 Read on for technical details.  
 
 This documentation is based on the work of [oscar6echo](https://gitlab.com/oscar6echo/jupyter-widget-d3-slider/blob/master/README.md) who has contributed heavily to this project.
@@ -20,7 +20,7 @@ To install use pip and npm:
     $ npm install
     $ cd ..
     $ pip install .
-    $ jupyter nbextension enable --py --sys-prefix FirstWidget
+    $ jupyter nbextension enable --py --sys-prefix first_widget
 
 
 For a development installation:
@@ -30,8 +30,8 @@ For a development installation:
     $ npm install
     $ cd ..
     $ pip install -e .
-    $ jupyter nbextension install --py --symlink --sys-prefix FirstWidget
-    $ jupyter nbextension enable --py --sys-prefix FirstWidget
+    $ jupyter nbextension install --py --symlink --sys-prefix first_widget
+    $ jupyter nbextension enable --py --sys-prefix first_widget
 
 ## 2 - Paths
 
@@ -59,11 +59,11 @@ The flag `--sys-prefix` means extension are installed in this data folder:
 
     /usr/local/anaconda3/share/jupyter
 
-There you can see a `FirstWidget` folder or symlink back to the source folder `static/`.  
+There you can see a `first-widget` folder or symlink back to the source folder `static/`.  
 For example:
 
     drwxr-xr-x  4 Olivier  staff   136B Sep 30 18:09 jupyter-js-widgets/
-    drwxr-xr-x  5 Olivier  staff   170B Oct  3 02:42 FirstWidget/
+    drwxr-xr-x  5 Olivier  staff   170B Oct  3 02:42 first-widget/
 
 To check nbextensions are properly install and enabled, for example:
 
@@ -81,7 +81,7 @@ To check nbextensions are properly install and enabled, for example:
         notebook section
         jupyter-js-widgets/extension  enabled 
         - Validating: OK
-        FirstWidget/extension  enabled 
+        first-widget/extension  enabled 
         - Validating: OK
 
 
@@ -97,7 +97,7 @@ It performs the following:
 The first step is the `npm install` command per se.  
 The second is the `prepare` command as defined in `package.json`. And `npm prepare` is automatically executed after npm install as explained in the [official doc](https://docs.npmjs.com/misc/scripts).
 
-The result is the creation of folders `js/dist` and `FirstWidget/static` containing compiled javascript from source code in folder `js/`.
+The result is the creation of folders `js/dist` and `first_widget/static` containing compiled javascript from source code in folder `js/`.
 
 ### 3.2 - `pip install`
 
@@ -114,27 +114,27 @@ This command must be run **AFTER** the folder `static/` was created.
 
 It is a standard `pip install` command:
 + The source files and egg-info are copied to `/usr/local/anaconda3/lib/python3.6/site-packages`
-+ The files in folder `static/` are copied to `share/jupyter/nbextensions/FirstWidget`
++ The files in folder `static/` are copied to `share/jupyter/nbextensions/first-widget`
 + Note that for a **dev install**:
     + An `egg-link` file links back to the source folder
-    + No file is copied to the folder `nbextensions/FirstWidget`
+    + No file is copied to the folder `nbextensions/first-widget`
     + Thanks to the `--symlink`, during dev, you just need to restart the kernel to take into account any modification in the Python code!
 
 ### 3.3 - `jupyter nbextension (install|uninstall)`
 
 The full command is:
 ```bash
-$ jupyter nbextension (install|uninstall) --py [--symlink] --sys-prefix FirstWidget
+$ jupyter nbextension (install|uninstall) --py [--symlink] --sys-prefix first_widget
 ```
 
-It copies [create symlinks] resp. removes `static/` files to resp. from the nbextension data folder `share/jupyter/nbextensions/FirstWidget` and adds resp. removes lines in config file `notebook.json` in config directory `/usr/local/anaconda3/etc/jupyter`.
+It copies [create symlinks] resp. removes `static/` files to resp. from the nbextension data folder `share/jupyter/nbextensions/first-widget` and adds resp. removes lines in config file `notebook.json` in config directory `/usr/local/anaconda3/etc/jupyter`.
 
 The config file `notebook.json` contains the following:
 
     {
         "load_extensions": {
             "jupyter-js-widgets/extension": true,
-            "FirstWidget/extension": true
+            "first-widget/extension": true
         }
     }
 
@@ -143,10 +143,10 @@ The config file `notebook.json` contains the following:
 
 The full command is:
 ```bash
-$ jupyter nbextension (enable|disable) --py --sys-prefix FirstWidget
+$ jupyter nbextension (enable|disable) --py --sys-prefix first_widget
 ```
 
-It sets to true resp. false the `FirstWidget/extension` line in config file `notebook.json` in config directory `/usr/local/anaconda3/etc/jupyter`.
+It sets to true resp. false the `first-widget/extension` line in config file `notebook.json` in config directory `/usr/local/anaconda3/etc/jupyter`.
 
 ### 3.5 - `npm run prepare`
 
@@ -159,7 +159,7 @@ It is a script (which simply calls `webpack`) in npm config file `package.json`.
 
 In an active dev activity (in the folder `js/`) substitute `npm install` by `npm run prepare` as there is no need to reload node_modules from the internet or even to get them from the local npm cache (located in `~/.npm`)
 
-This re-compile the source js folder into `static/`. The symlinks bring back from `share/jupyter/nbextensions/FirstWidget` to `js/static/`. So just reload the notebook. The new js is available instantly !
+This re-compile the source js folder into `static/`. The symlinks bring back from `share/jupyter/nbextensions/first-widget` to `js/static/`. So just reload the notebook. The new js is available instantly !
 
 ### 3.6 - `npm run watch`
 
@@ -177,7 +177,7 @@ In order to publish a first version of your widget on PyPI:
 + `twine upload dist/*`
 
 To upload a new version of your widget:
-+ change version in `FirstWidget/_version.py`
++ change version in `first_widget/_version.py`
 + delete `dist`
 + `python setup.py sdist`
 + `twine upload dist/*`
