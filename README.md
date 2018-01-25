@@ -182,5 +182,8 @@ To upload a new version of your widget:
 + `python setup.py sdist`
 + `twine upload dist/*`
 
-The full documentation can be found [here](https://packaging.python.org/tutorials/distributing-packages/).
+A quicker way to do the same by combining all the steps is: 
 
+`python setup.py sdist upload -r pypi`
+
+The full documentation can be found [here](https://packaging.python.org/tutorials/distributing-packages/).
