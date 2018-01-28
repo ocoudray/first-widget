@@ -63,6 +63,10 @@ data_files = [
         'first_widget/static/index.js',
         'first_widget/static/index.js.map',
     ]),
+    ('etc/jupyter/nbconfig/notebook.d', [
+        'enable_first_widget.json'
+    ])
+
 ]
 install_requires = install_requires
 zip_safe = False
