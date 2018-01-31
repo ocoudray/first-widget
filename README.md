@@ -6,7 +6,7 @@ This is a simple widget inspired by the jupyter [doc](https://ipywidgets.readthe
 
 This simple widget may serve as an example of working widget with good practices.
 
-To get a feel of the result check out the [demo notebook](https://github.com/ocoudray/first-widget/blob/master/notebooks/demo.ipynb).  
+To get a feel of the result check out the [demo notebook](https://github.com/ocoudray/first-widget/blob/master/notebooks/demo.ipynb) or the binder link, which takes you through the steps of building your own custom widget: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/PierreMarion23/jupyter-widget-hello-world-binder/master?filepath=hello_world.ipynb).  
 Read on for technical details.  
 
 This documentation is based on the work of [oscar6echo](https://gitlab.com/oscar6echo/jupyter-widget-d3-slider/blob/master/README.md) who has contributed heavily to this project.
@@ -20,7 +20,6 @@ To install use pip and npm:
     $ npm install
     $ cd ..
     $ pip install .
-    $ jupyter nbextension enable --py --sys-prefix first_widget
 
 
 For a development installation:
@@ -115,12 +114,15 @@ This command must be run **AFTER** the folder `static/` was created.
 It is a standard `pip install` command:
 + The source files and egg-info are copied to `/usr/local/anaconda3/lib/python3.6/site-packages`
 + The files in folder `static/` are copied to `share/jupyter/nbextensions/first-widget`
++ the `enable_first_widget.json` file is copied to `etc/jupyter/nbconfig/notebook.d` (see section 3.4)
 + Note that for a **dev install**:
     + An `egg-link` file links back to the source folder
-    + No file is copied to the folder `nbextensions/first-widget`
+    + No file is copied to the folder `nbextensions/first-widget` and `nbconfig/notebook.d`
     + Thanks to the `--symlink`, during dev, you just need to restart the kernel to take into account any modification in the Python code!
 
 ### 3.3 - `jupyter nbextension (install|uninstall)`
+
+This command is now only needed for an install in dev mode, not in normal mode.
 
 The full command is:
 ```bash
@@ -140,6 +142,8 @@ The config file `notebook.json` contains the following:
 
 
 ### 3.4 - `jupyter nbextension (enable|disable)`
+
+This command is now only needed for an install in dev mode, not in normal mode. In normal mode, jupyter notebook extensions are automatically enabled since notebook version 5.3. Automatic enabling works by putting the `enable_first_widget.json` fie in the `etc/jupyter/nbconfig/notebook.d` folder.
 
 The full command is:
 ```bash
